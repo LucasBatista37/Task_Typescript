@@ -1,5 +1,4 @@
 import './App.css';
-
 import { useState } from 'react';
 
 // Components
@@ -51,16 +50,32 @@ function App() {
   return (
     <>
       <div>
-        <Modal children={<TaskForm btnText='Editar Tarefa' task={taskToUpdate} taskList={taskList} handleUpdate={updateTask} />} />
+        <Modal>
+          <TaskForm 
+            btnText='Editar Tarefa' 
+            task={taskToUpdate} 
+            taskList={taskList} 
+            setTaskList={setTaskList} 
+            handleUpdate={updateTask}
+          />
+        </Modal>
         <Header />
         <main className={styles.main}>
           <div>
             <h2>Qual tarefa você vai realizar?</h2>
-            <TaskForm btnText='Criar tarefa' taskList={taskList} setTaskList={setTaskList} />
+            <TaskForm 
+              btnText='Criar tarefa' 
+              taskList={taskList} 
+              setTaskList={setTaskList} 
+            />
           </div>
           <div>
             <h2>Suas tarefas</h2>
-            <TaskList taskList={taskList} handleDelete={deleteTask} handleEdit={editTask} />
+            <TaskList 
+              taskList={taskList} 
+              handleDelete={deleteTask} 
+              handleEdit={editTask} 
+            />
           </div>
         </main>
         <Footer />

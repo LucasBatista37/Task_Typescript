@@ -1,13 +1,12 @@
-import React from 'react';
 import styles from './Modal.module.css';
 
 type Props = {
   children: React.ReactNode;
 }
 
-const Modal: React.FC<Props> = (props) => {
+const Modal: React.FC<Props> = ({ children }) => {
 
-  const closeModal = (e: React.MouseEvent): void => {
+  const closeModal = (): void => {
     const modal = document.querySelector("#modal");
     modal!.classList.add("hide");
   }
@@ -16,11 +15,10 @@ const Modal: React.FC<Props> = (props) => {
     <div id='modal' className='hide'>
       <div className={styles.fade} onClick={closeModal}></div>
       <div className={styles.modal}>
-        <h2>Texto modal</h2>
-        {props.children}
+        {children}
       </div>
     </div>
-  )
+  );
 }
 
 export default Modal;
